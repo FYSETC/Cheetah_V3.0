@@ -1,6 +1,6 @@
 # Cheetah_V3.0
 
-![](images/Cheetah_Top.png)
+</a>![](images/Cheetah_Top.jpg)<a> </a>![](images/Cheetah_Bot.jpg)<a>
 
 ## 1. Introduction
 
@@ -30,40 +30,40 @@ The redesigned Cheetah uses a 180Mhz master controller to provide higher speed c
 
 ## 2. Feature
 
-●Compact size: 101.5mm x 72mm，Compatible with the Creatlity ender 3/ender5 motherboard size
+- Compact size: 101.5mm x 72mm，Compatible with the Creatlity ender 3/ender5 motherboard size
 
-●**Fully integrated all in one solution:**
+- **Fully integrated all in one solution:**
 
-  ●**STM32F4****46** MCU (Run Marlin 2.0/Klipper )
+  - **STM32F446** MCU (Run Marlin 2.0/Klipper )
 
-  ●4X TMC2209 stepper drivers, Support sensor-less homing
+  - 4X TMC2209 stepper drivers, Support sensor-less homing
 
-●**UNIVERSAL POWER:**
+- **UNIVERSAL POWER:**
 
-  ●24V to 12V/2A DC-DC for fans
+  - 24V to 12V/2A DC-DC for fans
 
-  ●Integrated high precision power regulators (DC/DC): **5V** **4****A** Max and 3.3V 800mA Max LDO，
+  - Integrated high precision power regulators (DC/DC): **5V** **4****A** Max and 3.3V 800mA Max LDO，
 
-  ●12V&24V power pin out
+  - 12V&24V power pin out
 
-●Onboard TF card socket
+- Onboard TF card socket
 
-●EXP3 for 12864 display panel (Creality 12864 panel or FYSETC Generic12864)
+- EXP3 for 12864 display panel (Creality 12864 panel or FYSETC Generic12864)
 
-●EXP1&EXP2 RepRapDiscount SmartController compatible pin header on board
+- EXP1&EXP2 RepRapDiscount SmartController compatible pin header on board
 
-●Onboard 5V WS2812 RGB control
+- Onboard 5V WS2812 RGB control
 
-●**Onboard** **CANBUS** **Circuit**
+- **Onboard CANBUS Circuit**
 
-●**5-Pin** **Bltouch** **Interface**（Share IO with Probe and Z-Min）
+- **5-Pin Bltouch Interface**（Share IO with Probe and Z-Min）
 
-●SD card & USB upload support
+- SD card & USB upload support
 
-●Car fuses（15A） for main power input
+- Car fuses（15A） for main power input
 
-●Indicates all the name of PINS on the bottom
+- Indicates all the name of PINS on the bottom
 
-●Up to 3 ways PWM fans (5/12/24 Optional)
+- Up to 3 ways PWM fans (5/12/24 Optional)
 
-●Reliable PCB: **Four** **Layer****s**, TG155 FR4, Plug Hole, Immersion Gold
+- Reliable PCB: **Four Layers**, TG155 FR4, Plug Hole, Immersion Gold
