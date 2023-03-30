@@ -34,7 +34,7 @@ The redesigned Cheetah uses a 180Mhz master controller to provide higher speed c
 
 - **Fully integrated all in one solution:**
 
-  - **STM32F4****46** MCU (Run Marlin 2.0/Klipper )
+  - **STM32F446** MCU (Run Marlin 2.0/Klipper )
 
   - 4X TMC2209 stepper drivers, Support sensor-less homing
 
@@ -54,9 +54,9 @@ The redesigned Cheetah uses a 180Mhz master controller to provide higher speed c
 
 - Onboard 5V WS2812 RGB control
 
-- **Onboard** **CANBUS** **Circuit**
+- **Onboard CANBUS Circuit**
 
-- **5-Pin** **Bltouch** **Interface**（Share IO with Probe and Z-Min）
+- **5-Pin Bltouch Interface**（Share IO with Probe and Z-Min）
 
 - SD card & USB upload support
 
