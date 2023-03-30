@@ -1,6 +1,6 @@
 # Cheetah_V3.0
 
-![](images/Cheetah_Top.png)
+</a>![](images/Cheetah_Top.jpg)<a> </a>![](images/Cheetah_Bot.jpg)<a>
 
 ## 1. Introduction
 
