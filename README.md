@@ -66,4 +66,4 @@ The redesigned Cheetah uses a 180Mhz master controller to provide higher speed c
 
 - Up to 3 ways PWM fans (5/12/24 Optional)
 
-- Reliable PCB: **Four** **Layer****s**, TG155 FR4, Plug Hole, Immersion Gold
+- Reliable PCB: **Four Layers**, TG155 FR4, Plug Hole, Immersion Gold
