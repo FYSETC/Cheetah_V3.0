@@ -69,3 +69,120 @@ The redesigned Cheetah uses a 180Mhz master controller to provide higher speed c
 - Up to 3 ways PWM fans (5/12/24 Optional)
 
 - Reliable PCB: **Four Layers**, TG155 FR4, Plug Hole, Immersion Gold
+
+
+## 3. Configure the Cheetah Board
+
+Use SSH software to connect to your Raspberry Pi and enter the following command:
+```
+lsusb
+```
+You should see the device as shown below:
+![Image01.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image01.png)
+If not, please go back and check the power supply and wiring of the motherboard to ensure that each power indicator light is on.
+![Image02.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image02.png)
+
+
+Enter the following command to get the board ID:
+```
+ls /dev/serial/by-id
+```
+Copy the ID with Crtl+C
+![Image03.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image03.png)
+
+
+Use the browser to enter the IP address of the Raspberry Pi to enter the mainsail interface
+Click on MACHINE
+Click printer.cfg in the list to enter the editing interface
+![Image04.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image04.png)
+
+Replace the ID in the [mcu] section
+![Image05.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image05.png)
+
+Click SAVE & RESTART
+
+If it goes well, the system will automatically jump to Dashboard, and you can see the temperature curve
+
+### 3.1 Build Firmware Image
+
+
+* Login to the Raspberry Pi via ssh
+* Run the following:
+
+   ```
+   cd ~/klipper
+   make clean
+   make menuconfig
+   ```
+
+* In the menu structure there are a number of items to be selected.
+  * Select "Enable extra low-level configuration options"
+  * Set the micro-controller architecture is set to `STMicroelectronics STM32`
+  * Set the Processor model to `STM32F446`
+  * **Many people have been unable to connect to the MCU because of the bootloader problem, so we recommends choosing a mode without a bootloader.**
+  * Set the Clock Reference to `12 MHz crystal`
+  * Set the Communication interface to `USB (on PA11/PA12)`  
+
+   ![Image06.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image06.png)
+   
+
+* Once the configuration is selected, press `q` to exit, and "Yes" when  asked to save the configuration.
+
+* Run the command `make`
+* The `make` command, when completed, creates a firmware file **klipper.bin** which is stored in the folder `/home/pi/klipper/out`.  
+
+### 3.2 Firmware Installation
+
+* Requires a USB connection
+* Requires the installation of an extra jumper on the Cheetah V3 ( short the 3V3 and BT0)
+* Does NOT require a microSD card
+
+1. Power off the Cheetah V3
+2. Install a jumper between BT0 and 3V3
+
+![Image07.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image07.png)
+
+3. Connect Cheetah V3 & Pi via USB
+4. Power on Cheetah V3
+5. From your ssh session, run
+    ```
+    cd ~/klipper
+    ```
+    to make sure you are in the correct directory
+6. Run 
+    ```
+     lsusb
+    ```
+    and find the ID of the DFU device.
+    
+    ![Image08.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image08.png)
+    
+7. Run 
+    ```
+     make flash FLASH_DEVICE=0483:df11
+    ```
+    In general, the DFU mode of STM32 is this ID, if not, replacing 0483:df11 with the ID from the previous step
+ 8. If everything goes well, you will see the words SUCCESSFUL.
+  
+    ![Image09.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image09.png)
+    
+ 9. Power off the Cheetah V3
+
+ 10. Move the jumper to BT0 & GND (When the STM32 is turned on, BT0 should be at a low level, and it is also possible to hang it in the air, but in order to avoid unpredictable problems, it is better to short-circuit BT0 and GND here, which is more secure.)
+
+   ![Image10.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image10.png)
+
+
+ 11. Power up the Cheetah V3
+
+ 12. You can confirm that the flash was successful by running `ls /dev/serial/by-id`.  If the flash was successful, this should now show a klipper device, similar to:
+ 
+     ![Image11.png](https://github.com/FYSETC/FYSETC-Voron-0.2-Pro/blob/main/Docs/Manuals/Image11.png)
+  
+
+   (note: this test is not applicable if the firmware was compiled for UART, rather than USB)
+
+
+**Important:** If the Cheetah V3 is not powered with 12-24V, Klipper will be unable to communicate with the TMC drivers via UART and the Cheetah V3 will automatically shut down.
+
+
